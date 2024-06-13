@@ -9,6 +9,7 @@
         android:label="DetailedInformation"
         android:layout="@layout/detailed_information"/>
 
+
     <fragment
         android:id="@+id/watchStatus"
         android:name="com.project.wasp.fragment.WatchStatusFragment"
