@@ -3,13 +3,16 @@
     <item
         android:id="@+id/navigation_detailed"
         android:icon="@drawable/ic_launcher_background"
+        android:actionLayout="@layout/detailed_information"
         android:title="@string/nerd_mode" />
     <item
         android:id="@+id/navigation_default"
         android:icon="@drawable/ic_launcher_background"
+        android:actionLayout="@layout/watch_status"
         android:title="@string/watch_status" />
     <item
         android:id="@+id/navigation_graphical"
         android:icon="@drawable/ic_launcher_background"
+        android:actionLayout="@layout/graphical_information"
         android:title="@string/graphical_mode" />
 </menu>

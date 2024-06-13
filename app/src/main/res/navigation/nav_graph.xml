@@ -2,22 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/watchStatus">
+    app:startDestination="@id/navigation_default"
+    app:route="root">
     <fragment
-        android:id="@+id/detailedInfo"
+        android:id="@+id/navigation_detailed"
         android:name="com.project.wasp.fragment.DetailedInfoFragment"
         android:label="DetailedInformation"
         android:layout="@layout/detailed_information"/>
 
-
     <fragment
-        android:id="@+id/watchStatus"
+        android:id="@+id/navigation_default"
         android:name="com.project.wasp.fragment.WatchStatusFragment"
         android:label="WatchStatusFragment"
         android:layout="@layout/watch_status"/>
 
     <fragment
-        android:id="@+id/graphicalInfo"
+        android:id="@+id/navigation_graphical"
         android:name="com.project.wasp.fragment.GraphicalInfoFragment"
         android:label="NotificationsFragment"
         android:layout="@layout/graphical_information"/>
