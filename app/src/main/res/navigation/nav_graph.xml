@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/detailedInfo">
+    <fragment
+        android:id="@+id/detailedInfo"
+        android:name="com.project.wasp.fragment.DetailedInfoFragment"
+        android:label="DetailedInformation"
+        android:layout="@layout/detailed_information"/>
+
+    <fragment
+        android:id="@+id/standBy"
+        android:name="com.project.wasp.fragment.WatchStatusFragment"
+        android:label="WatchStatusFragment"
+        android:layout="@layout/watch_status"/>
+
+    <fragment
+        android:id="@+id/graphicalInfo"
+        android:name="com.project.wasp.fragment.GraphicalInfoFragment"
+        android:label="NotificationsFragment"
+        android:layout="@layout/graphical_information"/>
+</navigation>
