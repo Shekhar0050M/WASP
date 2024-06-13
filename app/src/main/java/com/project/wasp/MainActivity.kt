@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val audioUtils = AudioUtils(this)
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        //Navigation Component
         val navController = findNavController(R.id.nav_host_fragment)
         bottomNavigationView.setupWithNavController(navController)
     }

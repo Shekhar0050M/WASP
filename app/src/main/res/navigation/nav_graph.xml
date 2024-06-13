@@ -10,7 +10,7 @@
         android:layout="@layout/detailed_information"/>
 
     <fragment
-        android:id="@+id/standBy"
+        android:id="@+id/watchStatus"
         android:name="com.project.wasp.fragment.WatchStatusFragment"
         android:label="WatchStatusFragment"
         android:layout="@layout/watch_status"/>
