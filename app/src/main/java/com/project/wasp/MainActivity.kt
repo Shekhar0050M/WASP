@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         //Audio Utils
         val audioUtils = AudioUtils(this)
         audioUtils.startRecording()
-
         //Navigation Component
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navController = findNavController(R.id.nav_host_fragment)
