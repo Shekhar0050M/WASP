@@ -8,8 +8,6 @@ import android.content.pm.PackageManager
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
-import android.os.Handler
-import android.os.Looper
 import androidx.core.app.ActivityCompat
 import java.io.FileOutputStream
 import java.util.Timer
@@ -24,9 +22,8 @@ class AudioUtils (val context: Context){
         AudioFormat.ENCODING_PCM_16BIT
     )
     private val timer = Timer()
-    private val handler = Handler(Looper.getMainLooper())
-    private val recordingIntervalMillis: Long = 24* 60 * 60 * 1000 // 1 day in milliseconds
-    private val recordingDelayMillis: Long = 2 * 1000 // 45 seconds in milliseconds
+    private val startInterval: Long = 30 * 1000 // 30 seconds in milliseconds
+    private val stopInterval: Long = 45 * 1000 // 45 seconds in milliseconds
     companion object {
         private const val RECORD_AUDIO_PERMISSION_CODE = 1001
         private const val SAMPLE_RATE = 44100
@@ -54,33 +51,37 @@ class AudioUtils (val context: Context){
         )
     }
 
+
     @SuppressLint("DiscouragedApi")
     fun startRecording() {
         if (isRecordAudioPermissionGranted()) {
 //            Toast.makeText(context, "Audio permission is granted", Toast.LENGTH_SHORT).show()
-            val task1 = object: TimerTask(){
-                override fun run() {
+           val startTask = object: TimerTask() {
+                override fun run(){
                     startRecordingTask()
                 }
-            }
-            timer.scheduleAtFixedRate(task1,0,recordingDelayMillis)
-            Timer().schedule(object: TimerTask(){
-                override fun run() {
-                    timer.cancel()
-                    stopRecording()
+           }
+            val stopTask = object: TimerTask() {
+                override fun run(){
+                    stopRecordingTask()
                 }
-            },recordingIntervalMillis)
+            }
+            timer.scheduleAtFixedRate(startTask, 0, startInterval + stopInterval)
+            timer.scheduleAtFixedRate(stopTask, startInterval, startInterval + stopInterval)
 //
         } else {
 //            Toast.makeText(context, "Audio permission is not granted", Toast.LENGTH_SHORT).show()
         }
     }
-    fun stopRecording() {
-        isRecording = false
-        timer.cancel()
-        audioRecord?.stop()
-        audioRecord?.release()
-        audioRecord = null
+    fun stopRecordingTask() {
+        if(isRecording) {
+            isRecording = false
+            timer.cancel()
+            audioRecord?.stop()
+            audioRecord?.release()
+            audioRecord = null
+        }
+//        println("Recording is stopped")
     }
     @SuppressLint("MissingPermission")
     private fun startRecordingTask() {
@@ -103,5 +104,6 @@ class AudioUtils (val context: Context){
         }
 
         outputStream.close()
+//        println("Recording is started")
     }
 }
