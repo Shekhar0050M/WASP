@@ -12,10 +12,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Audio Utils
         val audioUtils = AudioUtils(this)
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        audioUtils.startRecording()
+
         //Navigation Component
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navController = findNavController(R.id.nav_host_fragment)
         bottomNavigationView.setupWithNavController(navController)
+
     }
 }
