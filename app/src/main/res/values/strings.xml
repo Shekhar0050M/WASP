@@ -4,7 +4,8 @@
     <string name="nerd_mode">Nerd mode</string>
     <string name="watch_status">Status</string>
     <string name="graphical_mode">Normal mode</string>
-    <string name="audiotechnicaltext">Audio amplitude in number</string>
+    <string name="audiotechnicaltext">Audio amplitude is not available</string>
     <string name="audiographicaltext">Audio amplitude in colors</string>
     <string name="entity_status">Woof Woof</string>
+    <string name="audio_amplitude_text">Audio Amplitude is</string>
 </resources>

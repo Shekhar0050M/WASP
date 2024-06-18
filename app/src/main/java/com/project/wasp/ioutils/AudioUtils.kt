@@ -9,7 +9,7 @@ import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
 import androidx.core.app.ActivityCompat
-import java.io.FileOutputStream
+import java.text.DecimalFormat
 import java.util.Timer
 import java.util.TimerTask
 
@@ -22,8 +22,8 @@ class AudioUtils (val context: Context){
         AudioFormat.ENCODING_PCM_16BIT
     )
     private val timer = Timer()
-    private val startInterval: Long = 30 * 1000 // 30 seconds in milliseconds
-    private val stopInterval: Long = 45 * 1000 // 45 seconds in milliseconds
+    private val startInterval: Long = 5 * 1000 // 30 seconds in milliseconds
+    private val stopInterval: Long = 2 * 1000 // 45 seconds in milliseconds
     companion object {
         private const val RECORD_AUDIO_PERMISSION_CODE = 1001
         private const val SAMPLE_RATE = 44100
@@ -73,10 +73,20 @@ class AudioUtils (val context: Context){
 //            Toast.makeText(context, "Audio permission is not granted", Toast.LENGTH_SHORT).show()
         }
     }
-    fun stopRecordingTask() {
+
+    fun stopRecording() {
         if(isRecording) {
             isRecording = false
             timer.cancel()
+            audioRecord?.stop()
+            audioRecord?.release()
+            audioRecord = null
+        }
+    }
+    fun stopRecordingTask() {
+        if(isRecording) {
+            isRecording = false
+//            timer.cancel()
             audioRecord?.stop()
             audioRecord?.release()
             audioRecord = null
@@ -85,6 +95,7 @@ class AudioUtils (val context: Context){
     }
     @SuppressLint("MissingPermission")
     private fun startRecordingTask() {
+        isRecording = true
         audioRecord = AudioRecord(
             MediaRecorder.AudioSource.MIC,
             SAMPLE_RATE,
@@ -95,16 +106,27 @@ class AudioUtils (val context: Context){
 
         audioRecord?.startRecording()
 
-        val data = ByteArray(bufferSize)
-        val outputStream = FileOutputStream("/dev/null")
+    }
 
-        val bytesRead = audioRecord?.read(data, 0, bufferSize) ?: 0
-        if (bytesRead != AudioRecord.ERROR_INVALID_OPERATION) {
-            outputStream.write(data, 0, bytesRead)
+    fun calculateAmplitude(): String {
+        val decimalFormat = DecimalFormat("#.##")
+        if(!isRecording) {
+            return "0.0"
         }
+        val buffer = ShortArray(bufferSize)
+        val readSize = audioRecord?.read(buffer, 0, bufferSize, AudioRecord.READ_NON_BLOCKING)
+        var amplitude = 0.0
 
-        outputStream.close()
-//        println("Recording is started")
+            if (readSize != null && readSize > 0) {
+                for (i in 0 until readSize) {
+                    amplitude += buffer[i] * buffer[i]
+                }
+                amplitude /= readSize.toDouble()
+                amplitude = Math.sqrt(amplitude)
+            }
+
+
+        return decimalFormat.format(amplitude).toString()
     }
 
 
