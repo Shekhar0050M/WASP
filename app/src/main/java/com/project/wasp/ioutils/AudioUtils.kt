@@ -13,7 +13,7 @@ import java.text.DecimalFormat
 import java.util.Timer
 import java.util.TimerTask
 
-class AudioUtils (val context: Context){
+class AudioUtils (private val context: Context){
     private var audioRecord: AudioRecord? = null
     private var isRecording = false
     private val bufferSize = AudioRecord.getMinBufferSize(
@@ -103,9 +103,7 @@ class AudioUtils (val context: Context){
             AudioFormat.ENCODING_PCM_16BIT,
             bufferSize
         )
-
         audioRecord?.startRecording()
-
     }
 
     fun calculateAmplitude(): String {
@@ -117,17 +115,15 @@ class AudioUtils (val context: Context){
         val readSize = audioRecord?.read(buffer, 0, bufferSize, AudioRecord.READ_NON_BLOCKING)
         var amplitude = 0.0
 
-            if (readSize != null && readSize > 0) {
-                for (i in 0 until readSize) {
-                    amplitude += buffer[i] * buffer[i]
-                }
-                amplitude /= readSize.toDouble()
-                amplitude = Math.sqrt(amplitude)
+        if (readSize != null && readSize > 0) {
+            for (i in 0 until readSize) {
+                amplitude += buffer[i] * buffer[i]
             }
-
+            amplitude /= readSize.toDouble()
+            amplitude = Math.sqrt(amplitude)
+        }
 
         return decimalFormat.format(amplitude).toString()
     }
-
 
 }
