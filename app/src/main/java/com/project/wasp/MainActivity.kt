@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         // Start recording
         audioRecorder.startRecording()
-
-        // Handler to update amplitudeTextView and save amplitudeString in SharedPreferences
+//
+//        // Handler to update amplitudeTextView and save amplitudeString in SharedPreferences
         val handler = Handler(Looper.getMainLooper())
         handler.post(object : Runnable {
             override fun run() {
@@ -46,15 +46,15 @@ class MainActivity : AppCompatActivity() {
                     append(": ")
                     append(amplitude)
                 }
-
-                // Update amplitudeTextView
-                amplitudeTextView.text = sharedPreferencesManager.getValue("amplitudeText",
-                    getString(R.string.audiotechnicaltext))
+//
+//                // Update amplitudeTextView
+//                amplitudeTextView.text = sharedPreferencesManager.getValue("amplitudeText",
+//                    getString(R.string.audiotechnicaltext))
                 Log.d("SharedPreferencesManager", "Saving value: $amplitudeString with key: amplitudeText")
-                // Save amplitudeString in SharedPreferences
+//                // Save amplitudeString in SharedPreferences
                 sharedPreferencesManager.saveValue("amplitudeText", amplitudeString)
-
-                // Schedule the next update
+//
+//                // Schedule the next update
                 handler.postDelayed(this, 1000) // Update every second (1000 milliseconds)
             }
         })
