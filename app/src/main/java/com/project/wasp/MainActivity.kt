@@ -1,6 +1,7 @@
 package com.project.wasp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -11,6 +12,7 @@ import com.project.wasp.fragment.DetailedInfoFragment
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("MainActivity", "onCreate called")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Navigation Component
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         // Start the fragment when MainActivity is started
         if (savedInstanceState == null) {
+            Log.d("MainActivity","StartedDetailedInfoFragment")
             val fragment = DetailedInfoFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.navigation_detailed, fragment)
