@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.project.wasp.fragment.DetailedInfoFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,8 +17,17 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navController = findNavController(R.id.nav_host_fragment)
         bottomNavigationView.setupWithNavController(navController)
+
+        // Start the fragment when MainActivity is started
+        if (savedInstanceState == null) {
+            val fragment = DetailedInfoFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.navigation_detailed, fragment)
+                .commit()
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
     }
+
 }

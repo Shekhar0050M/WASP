@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.project.wasp.ioutils.AudioUtils
+import com.project.wasp.MainActivity
 
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -12,8 +12,10 @@ class BootReceiver : BroadcastReceiver() {
             Log.d("BootReceiver", "Device booted")
 
             // Start your service or activity
-            val serviceIntent = Intent(context, AudioUtils::class.java)
-            context?.startService(serviceIntent)
+            // Start MainActivity
+            val mainIntent = Intent(context, MainActivity::class.java)
+            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context?.startActivity(mainIntent)
         }
     }
 }

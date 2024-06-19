@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +63,7 @@ class DetailedInfoFragment: Fragment() {
             // Update amplitudeTextView
             amplitudeTextView.text = amplitudeString
 
-            Log.d("SharedPreferencesManager", "Saving value: $amplitudeString with key: amplitudeText")
+//            Log.d("SharedPreferencesManager", "Saving value: $amplitudeString with key: amplitudeText")
             // Save amplitudeString in SharedPreferences
             sharedPreferencesManager.saveValue("amplitudeText", amplitudeString)
 

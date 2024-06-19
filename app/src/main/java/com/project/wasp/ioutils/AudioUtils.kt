@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import java.text.DecimalFormat
 import java.util.Timer
@@ -91,7 +92,7 @@ class AudioUtils (private val context: Context){
             audioRecord?.release()
             audioRecord = null
         }
-//        println("Recording is stopped")
+        Log.d("AudioRecord", "Recording is stopped")
     }
     @SuppressLint("MissingPermission")
     private fun startRecordingTask() {
@@ -104,6 +105,7 @@ class AudioUtils (private val context: Context){
             bufferSize
         )
         audioRecord?.startRecording()
+        Log.d("AudioRecord", "Recording is started")
     }
 
     fun calculateAmplitude(): String {
