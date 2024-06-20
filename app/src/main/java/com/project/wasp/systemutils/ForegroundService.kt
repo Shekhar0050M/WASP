@@ -6,21 +6,30 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.project.wasp.R
 
 class ForegroundService : Service() {
+
     override fun onCreate() {
         super.onCreate()
-        // Perform initialization here
+        createNotificationChannel()
+        Log.d("ForegroundService", "Service created")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d("ForegroundService", "Service started")
+        val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("Wellness and Security App")
+            .setContentText("Monitoring your environment")
+            .setSmallIcon(R.drawable.ic_notification)
+            .build()
 
-        // Start the service in foreground mode
-        startForeground(NOTIFICATION_ID, createNotification())
+        startForeground(NOTIFICATION_ID, notification)
 
-        // Return START_STICKY to restart the service if it's killed by the system
+        // Add your monitoring logic here
+
         return START_STICKY
     }
 
@@ -30,31 +39,21 @@ class ForegroundService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Clean up resources here
-    }
-
-    private fun createNotification(): Notification {
-        // Create and return a notification for the foreground service
-        // Example: Create a basic notification
-        return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("WASP")
-            .setContentText("Running in background")
-            .setSmallIcon(R.drawable.ic_notification)
-            .build()
+        Log.d("ForegroundService", "Service destroyed")
     }
 
     private fun createNotificationChannel() {
-        val channel = NotificationChannel(
+        val serviceChannel = NotificationChannel(
             CHANNEL_ID,
             "Foreground Service Channel",
             NotificationManager.IMPORTANCE_DEFAULT
         )
         val manager = getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannel(channel)
+        manager?.createNotificationChannel(serviceChannel)
     }
 
     companion object {
-        private const val NOTIFICATION_ID = 1
-        private const val CHANNEL_ID = "ForegroundServiceChannel"
+        const val NOTIFICATION_ID = 1
+        const val CHANNEL_ID = "ForegroundServiceChannel"
     }
 }
