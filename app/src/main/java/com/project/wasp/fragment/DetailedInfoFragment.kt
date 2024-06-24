@@ -1,6 +1,7 @@
 package com.project.wasp.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,12 +11,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.project.wasp.R
-import com.project.wasp.ioutils.AudioUtils
+import com.project.wasp.systemutils.ForegroundService
 import com.project.wasp.utils.SharedPreferencesManager
 
 class DetailedInfoFragment: Fragment() {
 
-    private lateinit var audioRecorder: AudioUtils
     private lateinit var amplitudeTextView: TextView
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private val handler = Handler(Looper.getMainLooper())
@@ -30,12 +30,11 @@ class DetailedInfoFragment: Fragment() {
         // Initialize SharedPreferencesManager
         sharedPreferencesManager = SharedPreferencesManager(requireContext())
 
-        // Initialize AudioUtils and TextView
-        audioRecorder = AudioUtils(requireContext())
+        // Initialize AudioUtils TextView
         amplitudeTextView = view.findViewById(R.id.audioUtils)
 
-        // Start recording
-        audioRecorder.startRecording()
+        val intent = Intent(activity, ForegroundService::class.java)
+        activity?.startService(intent)
         // Inflate the layout for this fragment
         return view
     }
@@ -53,19 +52,9 @@ class DetailedInfoFragment: Fragment() {
 
     private val updateRunnable = object : Runnable {
         override fun run() {
-            val amplitude = audioRecorder.calculateAmplitude()
-            val amplitudeString = buildString {
-                append(getString(R.string.audio_amplitude_text))
-                append(": ")
-                append(amplitude)
-            }
-
-            // Update amplitudeTextView
+            // Retrieve amplitudeString from SharedPreferences
+            val amplitudeString = sharedPreferencesManager.getValue("amplitudeText", "")
             amplitudeTextView.text = amplitudeString
-
-//            Log.d("SharedPreferencesManager", "Saving value: $amplitudeString with key: amplitudeText")
-            // Save amplitudeString in SharedPreferences
-            sharedPreferencesManager.saveValue("amplitudeText", amplitudeString)
 
             // Schedule the next update
             handler.postDelayed(this, updateInterval)
