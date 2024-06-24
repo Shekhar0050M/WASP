@@ -43,7 +43,6 @@ class ForegroundService : Service() {
         // Initialize SharedPreferencesManager and AudioUtils
         sharedPreferencesManager = SharedPreferencesManager(this)
         audioRecorder = AudioUtils(this)
-        audioRecorder.startRecording()
 
         // Start updating amplitude
         handler.post(updateRunnable)
@@ -70,7 +69,7 @@ class ForegroundService : Service() {
         Log.d("ForegroundService", "Service started")
 
         // Add your monitoring logic here
-
+        audioRecorder.startRecording()
         return START_STICKY
     }
 

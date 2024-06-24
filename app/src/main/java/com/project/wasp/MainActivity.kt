@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         permissionsHelper.handlePermissionsResult(requestCode, permissions, grantResults)
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
     }

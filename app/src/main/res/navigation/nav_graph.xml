@@ -19,6 +19,6 @@
     <fragment
         android:id="@+id/navigation_graphical"
         android:name="com.project.wasp.fragment.GraphicalInfoFragment"
-        android:label="NotificationsFragment"
+        android:label="GraphicalInformation"
         android:layout="@layout/graphical_information"/>
 </navigation>
