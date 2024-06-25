@@ -2,6 +2,7 @@ package com.project.wasp
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.wasp.fragment.DetailedInfoFragment
+import com.project.wasp.systemutils.AppForegroundService
 import com.project.wasp.systemutils.PermissionsHelper
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +45,11 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.navigation_detailed, fragment)
             .commit()
+
+        // Start the app foreground service
+        Log.d("MainActivity","Started App Foreground Service")
+        val serviceIntent = Intent(this, AppForegroundService::class.java)
+        startForegroundService(serviceIntent)
     }
 
     override fun onRequestPermissionsResult(

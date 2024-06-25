@@ -37,6 +37,10 @@
         <service android:name=".systemutils.ForegroundService"
             android:enabled="true"
             android:exported="false"
+            android:foregroundServiceType="shortService"/>
+        <service android:name=".systemutils.AppForegroundService"
+            android:enabled="true"
+            android:exported="false"
             android:foregroundServiceType="microphone"/>
     </application>
 

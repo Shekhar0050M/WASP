@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.project.wasp.R
-import com.project.wasp.systemutils.ForegroundService
+import com.project.wasp.systemutils.AppForegroundService
 import com.project.wasp.utils.SharedPreferencesManager
 
 class GraphicalInfoFragment: Fragment() {
@@ -32,7 +32,7 @@ class GraphicalInfoFragment: Fragment() {
         // Initialize AudioUtils TextView
         amplitudeMicTextView = view.findViewById(R.id.audioUtils)
 
-        val intent = Intent(activity, ForegroundService::class.java)
+        val intent = Intent(activity, AppForegroundService::class.java)
         activity?.startService(intent)
         // Inflate the layout for this fragment
         return view
