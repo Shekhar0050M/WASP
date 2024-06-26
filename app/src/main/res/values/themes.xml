@@ -2,4 +2,21 @@
 <resources>
 
     <style name="Theme.WASP" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Morning" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorMorningPrimary</item>
+        <item name="colorPrimaryDark">@color/colorMorningPrimaryDark</item>
+        <item name="colorAccent">@color/colorMorningAccent</item>
+    </style>
+
+    <style name="Theme.LateMorning" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorLateMorningPrimary</item>
+        <item name="colorPrimaryDark">@color/colorLateMorningPrimaryDark</item>
+        <item name="colorAccent">@color/colorLateMorningAccent</item>
+    </style>
+
+    <style name="Theme.Night" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorNightPrimary</item>
+        <item name="colorPrimaryDark">@color/colorNightPrimaryDark</item>
+        <item name="colorAccent">@color/colorNightAccent</item>
+    </style>
 </resources>

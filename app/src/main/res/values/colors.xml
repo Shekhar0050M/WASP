@@ -7,4 +7,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Morning colors -->
+    <color name="colorMorningPrimary">#FFE082</color>
+    <color name="colorMorningPrimaryDark">#FFCA28</color>
+    <color name="colorMorningAccent">#FFB300</color>
+
+    <!-- Late Morning colors -->
+    <color name="colorLateMorningPrimary">#FFD54F</color>
+    <color name="colorLateMorningPrimaryDark">#FFC107</color>
+    <color name="colorLateMorningAccent">#FFB300</color>
+
+    <!-- Early Night colors -->
+    <color name="colorEarlyNightPrimary">#303F9F</color>
+    <color name="colorEarlyNightPrimaryDark">#283593</color>
+    <color name="colorEarlyNightAccent">#1A237E</color>
+
+    <!-- Night colors -->
+    <color name="colorNightPrimary">#283593</color>
+    <color name="colorNightPrimaryDark">#1A237E</color>
+    <color name="colorNightAccent">#0D47A1</color>
+
+    <!-- Add other color sets for different times of the night -->
 </resources>
