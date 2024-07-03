@@ -9,7 +9,6 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("MainActivity", "onCreate called")
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setThemeBasedOnTime()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -85,16 +84,15 @@ class MainActivity : AppCompatActivity() {
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
 
         when (hour) {
-            in 6..8 -> setTheme(R.style.Theme_Morning)
-            in 9..11 -> setTheme(R.style.Theme_LateMorning)
-//            in 12..14 -> setTheme(R.style.Theme_Afternoon)
-//            in 15..17 -> setTheme(R.style.Theme_LateAfternoon)
-//            in 18..20 -> setTheme(R.style.Theme_Evening)
-//            in 21..23 -> setTheme(R.style.Theme_EarlyNight)
-//            in 0..0 -> setTheme(R.style.Theme_Midnight)
-//            in 0..2 -> setTheme(R.style.Theme_Night)
-//            else -> setTheme(R.style.Theme_LateNight)
-            else -> setTheme(R.style.Theme_Night)
+            in 5..6 -> setTheme(R.style.Theme_EarlyMorning)
+            in 6..12 -> setTheme(R.style.Theme_LateMorning)
+            in 12..15 -> setTheme(R.style.Theme_EarlyAfternoon)
+            in 15..18 -> setTheme(R.style.Theme_LateAfternoon)
+            in 18..21  -> setTheme(R.style.Theme_EarlyEvening)
+            in 21..23 -> setTheme(R.style.Theme_LateEvening)
+            in 1..3 -> setTheme(R.style.Theme_EarlyNight)
+            in 3..5 -> setTheme(R.style.Theme_LateNight)
+            else -> setTheme(R.style.Theme_TrueColors)
         }
     }
 
