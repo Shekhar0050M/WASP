@@ -18,5 +18,6 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.project.wasp", appContext.packageName)
+
     }
 }

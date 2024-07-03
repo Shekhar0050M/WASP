@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_detailed"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/developer_mode_24px"
         android:actionLayout="@layout/detailed_information"
         android:title="@string/nerd_mode" />
     <item
         android:id="@+id/navigation_default"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/mode_standby_24px"
         android:actionLayout="@layout/watch_status"
         android:title="@string/watch_status" />
     <item
         android:id="@+id/navigation_graphical"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/for_you_24px"
         android:actionLayout="@layout/graphical_information"
         android:title="@string/graphical_mode" />
 </menu>

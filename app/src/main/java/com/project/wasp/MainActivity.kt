@@ -81,17 +81,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setThemeBasedOnTime() {
         val calendar = Calendar.getInstance()
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-
+        var hour = calendar.get(Calendar.HOUR_OF_DAY)
         when (hour) {
+            in 1..3 -> setTheme(R.style.Theme_EarlyNight)
+            in 3..5 -> setTheme(R.style.Theme_LateNight)
             in 5..6 -> setTheme(R.style.Theme_EarlyMorning)
             in 6..12 -> setTheme(R.style.Theme_LateMorning)
             in 12..15 -> setTheme(R.style.Theme_EarlyAfternoon)
             in 15..18 -> setTheme(R.style.Theme_LateAfternoon)
             in 18..21  -> setTheme(R.style.Theme_EarlyEvening)
             in 21..23 -> setTheme(R.style.Theme_LateEvening)
-            in 1..3 -> setTheme(R.style.Theme_EarlyNight)
-            in 3..5 -> setTheme(R.style.Theme_LateNight)
             else -> setTheme(R.style.Theme_TrueColors)
         }
     }
