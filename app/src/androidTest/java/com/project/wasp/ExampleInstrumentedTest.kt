@@ -76,6 +76,7 @@ class ExampleInstrumentedTest {
             val actualThemeResId = typedValue.resourceId
             assertEquals(expectedTheme, actualThemeResId)
         }
+
     }
 
     private fun grantPermissions(vararg permissions: String) {
