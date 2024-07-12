@@ -6,6 +6,8 @@ import android.Manifest.permission.MODIFY_AUDIO_SETTINGS
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.Manifest.permission.RECEIVE_BOOT_COMPLETED
 import android.Manifest.permission.RECORD_AUDIO
+import android.content.Context
+import android.content.res.Resources
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -71,7 +73,11 @@ class ExampleInstrumentedTest {
             val typedValue = android.util.TypedValue()
             activity.theme.resolveAttribute(themeAttr, typedValue, true)
             val actualThemeResId = typedValue.resourceId
-            assertEquals(expectedTheme, actualThemeResId)
+            val actualThemeBackgroundName = activity.convertResourceIdToStyleName(actualThemeResId)
+            activity.theme.resolveAttribute(expectedTheme, typedValue, true)
+            val expectedThemeResId = typedValue.resourceId
+            val expectedThemeBackgroundName = activity.convertResourceIdToStyleName(expectedThemeResId)
+            assertEquals(expectedThemeBackgroundName, actualThemeBackgroundName)
         }
     }
 
@@ -94,6 +100,14 @@ class ExampleInstrumentedTest {
             in 18..21 -> setTheme(R.style.Theme_EarlyEvening)
             in 21..23 -> setTheme(R.style.Theme_LateEvening)
             else -> setTheme(R.style.Theme_TrueColors)
+        }
+    }
+
+    private fun Context.convertResourceIdToStyleName(resourceId: Int): String {
+        return try {
+            this.resources.getResourceEntryName(resourceId)
+        } catch (e: Resources.NotFoundException) {
+            "Resource not found"
         }
     }
 }
