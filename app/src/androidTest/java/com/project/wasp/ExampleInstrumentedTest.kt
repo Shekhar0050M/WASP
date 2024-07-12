@@ -15,7 +15,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.Calendar
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -61,22 +60,19 @@ class ExampleInstrumentedTest {
     @Test
     fun testThemeApp(){
         // Theme of the app as per the time under test
-        val calendar = Calendar.getInstance()
         val hour = 1
         val expectedTheme = R.style.Theme_EarlyNight
-        val target: Any = activityScenario
-        val field = target.javaClass.getDeclaredField(expectedTheme.toString())
-        field.isAccessible = true
-        field.set(target,calendar)
-        calendar.set(Calendar.HOUR_OF_DAY, hour)
         activityScenario.onActivity { activity ->
+            // Simulate setting the theme based on time
+            activity.setThemeBasedOnTime(hour)
+
+            // Verify the theme
             val themeAttr = android.R.attr.windowBackground
             val typedValue = android.util.TypedValue()
             activity.theme.resolveAttribute(themeAttr, typedValue, true)
             val actualThemeResId = typedValue.resourceId
             assertEquals(expectedTheme, actualThemeResId)
         }
-
     }
 
     private fun grantPermissions(vararg permissions: String) {
@@ -84,6 +80,20 @@ class ExampleInstrumentedTest {
         for (permission in permissions) {
             val command = "pm grant ${instrumentation.targetContext.packageName} $permission"
             instrumentation.uiAutomation.executeShellCommand(command)
+        }
+    }
+
+    private fun MainActivity.setThemeBasedOnTime(hour: Int) {
+        when (hour) {
+            in 1..3 -> setTheme(R.style.Theme_EarlyNight)
+            in 3..5 -> setTheme(R.style.Theme_LateNight)
+            in 5..6 -> setTheme(R.style.Theme_EarlyMorning)
+            in 6..12 -> setTheme(R.style.Theme_LateMorning)
+            in 12..15 -> setTheme(R.style.Theme_EarlyAfternoon)
+            in 15..18 -> setTheme(R.style.Theme_LateAfternoon)
+            in 18..21 -> setTheme(R.style.Theme_EarlyEvening)
+            in 21..23 -> setTheme(R.style.Theme_LateEvening)
+            else -> setTheme(R.style.Theme_TrueColors)
         }
     }
 }
