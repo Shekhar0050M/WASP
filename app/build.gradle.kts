@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.runtime.saved.instance.state)
     implementation(libs.androidx.rules)
+    implementation(libs.rive.android)
+    implementation(libs.startup.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

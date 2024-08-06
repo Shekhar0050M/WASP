@@ -37,6 +37,8 @@ androidx-runtime-saved-instance-state = { group = "androidx.compose.runtime", na
 material = { module = "com.google.android.material:material", version.ref = "material" }
 material3 = { module = "androidx.compose.material3:material3" }
 androidx-rules = { group = "androidx.test", name = "rules", version.ref = "rules" }
+rive-android = { group = "app.rive", name = "rive-android", version = "8.7.0" }
+startup-runtime = { group = "androidx.startup", name = "startup-runtime", version = "1.1.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
