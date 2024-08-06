@@ -1296,4 +1296,56 @@
     <color name="colorTrueColors_surfaceContainer_highContrast">#E9EFEE</color>
     <color name="colorTrueColors_surfaceContainerHigh_highContrast">#E3E9E9</color>
     <color name="colorTrueColors_surfaceContainerHighest_highContrast">#DDE4E3</color>
+
+<!--    Animated background Colors -->
+<!--    Light Mode  -->
+    <color name="rive_light_1">#ddfae8</color>
+    <color name="rive_light_2">#366853</color>
+    <color name="rive_light_3">#fdefbd</color>
+    <color name="rive_light_4">#40534e</color>
+    <color name="rive_light_5">#e2be6b</color>
+    <color name="rive_light_6">#3fad8f</color>
+    <color name="rive_light_7">#8fb17f</color>
+    <color name="rive_light_8">#eecc6f</color>
+    <color name="rive_light_9">#72aebb</color>
+    <color name="rive_light_10">#363b59</color>
+    <color name="rive_light_11">#c8bc98</color>
+    <color name="rive_light_12">#a6d5c9</color>
+    <color name="rive_light_13">#e17f6d</color>
+    <color name="rive_light_14">#ffc887</color>
+    <color name="rive_light_15">#fff7b0</color>
+    <color name="rive_light_16">#e7bb9e</color>
+    <color name="rive_light_17">#bc8b71</color>
+    <color name="rive_light_18">#9c2618</color>
+    <color name="rive_light_19">#72888d</color>
+    <color name="rive_light_20">#8ec1b7</color>
+    <color name="rive_light_21">#c77a1e</color>
+    <color name="rive_light_22">#afdee4</color>
+    <color name="rive_light_23">#aea4d2</color>
+    <color name="rive_light_24">#ca968e</color>
+    <color name="rive_light_25">#5b9549</color>
+    <color name="rive_light_26">#385e6e</color>
+<!--    Dark Mode   -->
+    <color name="rive_dark_1">#0f074c</color>
+    <color name="rive_dark_2">#745bee</color>
+    <color name="rive_dark_3">#5c43cf</color>
+    <color name="rive_dark_4">#c390e9</color>
+    <color name="rive_dark_5">#291ee8</color>
+    <color name="rive_dark_6">#dfbb90</color>
+    <color name="rive_dark_7">#9d8d7b</color>
+    <color name="rive_dark_8">#7a3a1c</color>
+    <color name="rive_dark_9">#b25fe9</color>
+    <color name="rive_dark_10">#ecbbff</color>
+    <color name="rive_dark_11">#9db0f7</color>
+    <color name="rive_dark_12">#d8beb9</color>
+    <color name="rive_dark_13">#689de3</color>
+    <color name="rive_dark_14">#708ea7</color>
+    <color name="rive_dark_15">#ff8045</color>
+    <color name="rive_dark_16">#703a66</color>
+    <color name="rive_dark_17">#ff7552</color>
+    <color name="rive_dark_18">#48364c</color>
+    <color name="rive_dark_19">#782b02</color>
+    <color name="rive_dark_20">#fcbfbf</color>
+    <color name="rive_dark_21">#ffdcd9</color>
+    <color name="rive_dark_22">#aab0e1</color>
 </resources>
