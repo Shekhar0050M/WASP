@@ -60,6 +60,7 @@ class DetailedInfoFragment: Fragment() {
             handler.postDelayed(this, updateInterval)
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         // Stop the handler when the fragment's view is destroyed

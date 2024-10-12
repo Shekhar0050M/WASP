@@ -11,5 +11,12 @@
         android:text="@string/audiotechnicaltext"
         android:textSize="18sp"
         android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/audioAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/average_noise_level_averagenoise_hz"
+        android:textSize="18sp"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>
