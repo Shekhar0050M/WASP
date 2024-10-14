@@ -2,9 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/output"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -14,5 +16,7 @@
         app:navGraph="@navigation/nav_graph"
         tools:ignore="FragmentTagUsage" />
 
-    <include layout="@layout/navigation_toggle"/>
+
+
+    <include layout="@layout/navigation_toggle" />
 </RelativeLayout>

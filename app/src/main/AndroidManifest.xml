@@ -51,6 +51,7 @@
             <meta-data android:name="app.rive.runtime.kotlin.RiveInitializer"
                 android:value="androidx.startup" />
         </provider>
+
     </application>
 
 </manifest>
