@@ -54,6 +54,14 @@ android {
     }
 }
 
+chaquopy {
+    defaultConfig {
+
+    }
+    productFlavors { }
+    sourceSets { }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)

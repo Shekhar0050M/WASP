@@ -75,6 +75,13 @@ class MainActivity : AppCompatActivity() {
         val serviceIntent = Intent(this, AppForegroundService::class.java)
         startForegroundService(serviceIntent)
 
+        //PYOD
+        val context = this
+        if(! Python.isStarted()){
+            Python.start(AndroidPlatform(context))
+        }
+        val py = Python.getInstance()
+
     }
 
     override fun onRequestPermissionsResult(
