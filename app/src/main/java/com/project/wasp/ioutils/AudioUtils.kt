@@ -17,6 +17,7 @@ import java.util.TimerTask
 class AudioUtils (private val context: Context){
     private var audioRecord: AudioRecord? = null
     private var isRecording = false
+    private val slidingWindowTracker = SlidingWindowNoiseTracker(context, windowSizeMinutes = 10)
     private val bufferSize = AudioRecord.getMinBufferSize(
         SAMPLE_RATE,
         AudioFormat.CHANNEL_IN_MONO,
@@ -125,8 +126,17 @@ class AudioUtils (private val context: Context){
             amplitude = Math.sqrt(amplitude)
         }
 
+        // Add amplitude to the noise tracker
+        slidingWindowTracker.addNoise(System.currentTimeMillis() / 1000, amplitude)
+
         return decimalFormat.format(amplitude).toString()
     }
+
+    fun getAverageAmplitude(): String {
+        val decimalFormat = DecimalFormat("#.##")
+        return decimalFormat.format(slidingWindowTracker.getAverageNoise(System.currentTimeMillis() / 1000)).toString()
+    }
+
 
 }
 
