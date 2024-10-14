@@ -58,7 +58,8 @@ class DetailedInfoFragment: Fragment() {
             val amplitudeString = sharedPreferencesManager.getValue("amplitudeText", "")
             amplitudeMicTextView.text = amplitudeString
 
-            averageAmplitudeMicTextView.text = amplitudeString
+            val averageAmplitudeString = sharedPreferencesManager.getValue("averageAmplitudeText", "")
+            averageAmplitudeMicTextView.text = averageAmplitudeString
             // Schedule the next update
             handler.postDelayed(this, updateInterval)
         }

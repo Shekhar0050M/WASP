@@ -57,8 +57,16 @@ class AppForegroundService : Service() {
                 append(amplitude)
             }
 
+//            val averageAmplitude = audioRecorder.calculateAmplitude()
+            val averageAmplitudeString = buildString {
+                append(getString(R.string.average_audio_amplitude_text))
+                append(": ")
+                append("0.0")
+            }
+
             // Save amplitudeString in SharedPreferences
             sharedPreferencesManager.saveValue("amplitudeText", amplitudeString)
+            sharedPreferencesManager.saveValue("averageAmplitudeText", averageAmplitudeString)
 
             // Schedule the next update
             handler.postDelayed(this, updateInterval)
