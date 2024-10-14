@@ -18,6 +18,7 @@ import java.util.TimerTask
 
 class AudioUtils (private val context: Context){
     private var audioRecord: AudioRecord? = null
+    private var noiseTracker: SlidingWindowNoiseTracker? = null
     private var isRecording = false
     private val bufferSize = AudioRecord.getMinBufferSize(
         SAMPLE_RATE,
@@ -138,6 +139,7 @@ class AudioUtils (private val context: Context){
                 tracker.addNoise(calculateAmplitude().toInt())
             }
         }
+        timer.scheduleAtFixedRate(startTask, 0, startInterval + stopInterval)
 
         return tracker.getAverageNoise().toString()
     }
@@ -145,28 +147,3 @@ class AudioUtils (private val context: Context){
 }
 
 
-class SlidingWindowNoiseTracker(windowSizeMinutes: Int = 10) {
-    private val windowSizeSeconds: Long = windowSizeMinutes * 60L
-    private val window: Deque<Pair<Long, Int>> = ArrayDeque()
-    private var totalSum: Long = 0
-
-    // Add new noise data and remove old entries beyond the sliding window duration
-    fun addNoise(noiseLevel: Int) {
-        val timestamp = System.currentTimeMillis() / 1000  // Current time in seconds
-
-        // Remove old data points outside the sliding window
-        while (window.isNotEmpty() && (timestamp - window.peekFirst().first > windowSizeSeconds)) {
-            val oldData = window.pollFirst()
-            totalSum -= oldData.second
-        }
-
-        // Add the new noise data
-        window.addLast(Pair(timestamp, noiseLevel))
-        totalSum += noiseLevel
-    }
-
-    // Calculate the average noise
-    fun getAverageNoise(): Double {
-        return if (window.isNotEmpty()) totalSum.toDouble() / window.size else 0.0
-    }
-}
