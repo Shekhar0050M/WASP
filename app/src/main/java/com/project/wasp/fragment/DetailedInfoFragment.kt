@@ -17,6 +17,7 @@ import com.project.wasp.utils.SharedPreferencesManager
 class DetailedInfoFragment: Fragment() {
 
     private lateinit var amplitudeMicTextView: TextView
+    private lateinit var averageAmplitudeMicTextView: TextView
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval = 1000L // Update every second (1000 milliseconds)
@@ -32,6 +33,7 @@ class DetailedInfoFragment: Fragment() {
 
         // Initialize AudioUtils TextView
         amplitudeMicTextView = view.findViewById(R.id.audioUtils)
+        averageAmplitudeMicTextView = view.findViewById(R.id.audioAverage)
 
         val intent = Intent(activity, AppForegroundService::class.java)
         activity?.startService(intent)
@@ -56,6 +58,7 @@ class DetailedInfoFragment: Fragment() {
             val amplitudeString = sharedPreferencesManager.getValue("amplitudeText", "")
             amplitudeMicTextView.text = amplitudeString
 
+            averageAmplitudeMicTextView.text = amplitudeString
             // Schedule the next update
             handler.postDelayed(this, updateInterval)
         }
