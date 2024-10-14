@@ -11,14 +11,11 @@ import android.media.MediaRecorder
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import java.text.DecimalFormat
-import java.util.ArrayDeque
-import java.util.Deque
 import java.util.Timer
 import java.util.TimerTask
 
 class AudioUtils (private val context: Context){
     private var audioRecord: AudioRecord? = null
-    private var noiseTracker: SlidingWindowNoiseTracker? = null
     private var isRecording = false
     private val bufferSize = AudioRecord.getMinBufferSize(
         SAMPLE_RATE,
@@ -129,19 +126,6 @@ class AudioUtils (private val context: Context){
         }
 
         return decimalFormat.format(amplitude).toString()
-    }
-
-    fun getAverageAmplitude(): String {
-        val tracker = SlidingWindowNoiseTracker(windowSizeMinutes = 10)
-        tracker.addNoise(calculateAmplitude().toInt())
-        val startTask = object: TimerTask() {
-            override fun run(){
-                tracker.addNoise(calculateAmplitude().toInt())
-            }
-        }
-        timer.scheduleAtFixedRate(startTask, 0, startInterval + stopInterval)
-
-        return tracker.getAverageNoise().toString()
     }
 
 }
