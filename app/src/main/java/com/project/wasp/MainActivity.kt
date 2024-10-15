@@ -8,20 +8,16 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.chaquo.python.PyException
-import com.chaquo.python.PyObject
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.wasp.fragment.DetailedInfoFragment
 import com.project.wasp.systemutils.AppForegroundService
 import com.project.wasp.systemutils.PermissionsHelper
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("MainActivity", "onCreate called")
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         setThemeBasedOnTime()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -80,7 +76,10 @@ class MainActivity : AppCompatActivity() {
         if(! Python.isStarted()){
             Python.start(AndroidPlatform(context))
         }
-        val py = Python.getInstance()
+//        val py = Python.getInstance()
+//        val module = py.getModule("interpreter")
+
+
 
     }
 
