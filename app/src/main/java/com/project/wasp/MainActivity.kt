@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         val serviceIntent = Intent(this, AppForegroundService::class.java)
         startForegroundService(serviceIntent)
 
+        // Python code run
         onCreatePythonRun()
     }
 
