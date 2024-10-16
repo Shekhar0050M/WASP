@@ -24,8 +24,8 @@ class AudioUtils (private val context: Context){
         AudioFormat.ENCODING_PCM_16BIT
     )
     private val timer = Timer()
-    private val startInterval: Long = 5 * 1000 // 30 seconds in milliseconds
-    private val stopInterval: Long = 2 * 1000 // 45 seconds in milliseconds
+    private val startInterval: Long = 600 * 1000 // 1 minute in milliseconds
+    private val stopInterval: Long = 300 * 1000 // 45 seconds in milliseconds
     companion object {
         private const val RECORD_AUDIO_PERMISSION_CODE = 1001
         private const val SAMPLE_RATE = 44100

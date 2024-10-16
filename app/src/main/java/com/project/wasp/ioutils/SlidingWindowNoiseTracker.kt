@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import java.util.ArrayDeque
 import java.util.Deque
 
-class SlidingWindowNoiseTracker(private val context: Context, windowSizeMinutes: Int = 10) {
+class SlidingWindowNoiseTracker(private val context: Context, windowSizeMinutes: Int = 60) {
     private val windowSizeSeconds = windowSizeMinutes * 60
     private val window: Deque<Pair<Long, Double>> = ArrayDeque()
     private var totalSum = 0.0

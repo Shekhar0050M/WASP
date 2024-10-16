@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.chaquo.python.Python
-import com.chaquo.python.android.AndroidPlatform
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.wasp.fragment.DetailedInfoFragment
 import com.project.wasp.systemutils.AppForegroundService
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("MainActivity", "onCreate called")
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         setThemeBasedOnTime()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -70,16 +68,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity","Started App Foreground Service")
         val serviceIntent = Intent(this, AppForegroundService::class.java)
         startForegroundService(serviceIntent)
-
-        //PYOD
-        val context = this
-        if(! Python.isStarted()){
-            Python.start(AndroidPlatform(context))
-        }
-//        val py = Python.getInstance()
-//        val module = py.getModule("interpreter")
-
-
 
     }
 
