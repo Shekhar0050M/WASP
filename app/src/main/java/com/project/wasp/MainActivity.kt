@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.wasp.fragment.DetailedInfoFragment
 import com.project.wasp.systemutils.AppForegroundService
@@ -69,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         val serviceIntent = Intent(this, AppForegroundService::class.java)
         startForegroundService(serviceIntent)
 
+        onCreatePythonRun()
     }
 
     override fun onRequestPermissionsResult(
@@ -97,6 +100,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun onCreatePythonRun(){
+        if (! Python.isStarted()) {
+            Python.start(AndroidPlatform(getApplicationContext()));
+        }
+        val python = Python.getInstance()
+        val module = python.getModule("interpreter")
+        val image = module["k"]
+        Log.d("MainActivity", image.toString())
+    }
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(timeReceiver)
