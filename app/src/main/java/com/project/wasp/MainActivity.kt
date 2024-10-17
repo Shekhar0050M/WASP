@@ -103,11 +103,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun onCreatePythonRun(){
         if (! Python.isStarted()) {
-            Python.start(AndroidPlatform(getApplicationContext()));
+            Python.start(AndroidPlatform(getApplicationContext()))
         }
         val python = Python.getInstance()
         val module = python.getModule("interpreter")
-        val image = module["k"]
+        val image = module["fig"]
         Log.d("MainActivity", image.toString())
     }
     override fun onDestroy() {

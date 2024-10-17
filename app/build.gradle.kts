@@ -59,12 +59,10 @@ android {
 chaquopy {
     defaultConfig {
         version = "3.8"
-//        pip {
-//            install("random")
-//            install("numpy")
-//            install("matplotlib")
-//            install("pyod")
-//        }
+        pip {
+            install("numpy")
+            install("matplotlib")
+        }
     }
 }
 
