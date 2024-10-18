@@ -9,12 +9,14 @@ import android.util.Log
 import com.project.wasp.MainActivity
 import com.project.wasp.R
 import com.project.wasp.ioutils.AudioUtils
+import com.project.wasp.ioutils.SpeakerUsageChecker
 import com.project.wasp.utils.SharedPreferencesManager
 
 class AppForegroundService : Service() {
 
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var audioRecorder: AudioUtils
+    private lateinit var speakerUsageChecker: SpeakerUsageChecker
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval = 1000L // Update every second (1000 milliseconds)
@@ -64,9 +66,17 @@ class AppForegroundService : Service() {
                 append(averageAmplitude)
             }
 
+//            val speakerUsage = speakerUsageChecker.speakerStatus()
+            val speakerUsageString = buildString {
+                append("Speaker status is")
+                append(": ")
+                append("speakerUsage")
+            }
+
             // Save amplitudeString in SharedPreferences
             sharedPreferencesManager.saveValue("amplitudeText", amplitudeString)
             sharedPreferencesManager.saveValue("averageAmplitudeText", averageAmplitudeString)
+            sharedPreferencesManager.saveValue("speakerUsageText", speakerUsageString)
 
             // Schedule the next update
             handler.postDelayed(this, updateInterval)
