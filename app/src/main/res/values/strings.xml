@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WASP</string>
     <string name="textview">TextView</string>
-    <string name="nerd_mode">Nerd mode</string>
+    <string name="nerd_mode">Haptic Mode</string>
     <string name="watch_status">Status</string>
     <string name="graphical_mode">Normal mode</string>
     <string name="audiotechnicaltext">Audio amplitude is not available</string>
