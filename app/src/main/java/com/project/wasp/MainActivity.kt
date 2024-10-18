@@ -9,7 +9,6 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.chaquo.python.Python
@@ -103,13 +102,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun onCreatePythonRun(){
         if (! Python.isStarted()) {
-            Python.start(AndroidPlatform(getApplicationContext()))
+            Python.start(AndroidPlatform(applicationContext))
         }
         val python = Python.getInstance()
         val module = python.getModule("interpreter")
         val image = module["fig"]
         Log.d("MainActivity", image.toString())
     }
+
+
+
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(timeReceiver)

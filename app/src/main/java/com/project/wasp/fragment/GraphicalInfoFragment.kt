@@ -17,6 +17,7 @@ class GraphicalInfoFragment: Fragment() {
 
     private lateinit var amplitudeMicTextView: TextView
     private lateinit var averageAmplitudeMicTextView: TextView
+    private lateinit var speakerUsageChecker: TextView
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval = 1000L // Update every second (1000 milliseconds)
@@ -33,6 +34,7 @@ class GraphicalInfoFragment: Fragment() {
         // Initialize AudioUtils TextView
         amplitudeMicTextView = view.findViewById(R.id.audioUtils)
         averageAmplitudeMicTextView = view.findViewById(R.id.audioAverage)
+        speakerUsageChecker= view.findViewById(R.id.speakerUsage)
 
 
         val intent = Intent(activity, AppForegroundService::class.java)

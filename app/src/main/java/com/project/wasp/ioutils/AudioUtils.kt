@@ -137,7 +137,6 @@ class AudioUtils (private val context: Context){
         return decimalFormat.format(slidingWindowTracker.getAverageNoise(System.currentTimeMillis() / 1000)).toString()
     }
 
-
 }
 
 
