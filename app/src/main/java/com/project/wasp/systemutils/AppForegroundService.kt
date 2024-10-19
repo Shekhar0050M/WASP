@@ -68,12 +68,12 @@ class AppForegroundService : Service() {
             }
 
             val speakerUsage = speakerUsageChecker.isSpeakerActive()
-            Log.d("AppForegroundService","speaker usage ")
             val speakerUsageString = buildString {
                 append("Speaker status is")
                 append(": ")
                 append(speakerUsage)
             }
+            Log.d("AppForegroundService","speaker usage ")
 
             // Save amplitudeString in SharedPreferences
             sharedPreferencesManager.saveValue("amplitudeText", amplitudeString)
