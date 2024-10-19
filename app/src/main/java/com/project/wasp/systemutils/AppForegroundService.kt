@@ -66,11 +66,12 @@ class AppForegroundService : Service() {
                 append(averageAmplitude)
             }
 
-//            val speakerUsage = speakerUsageChecker.speakerStatus()
+//            val speakerUsage = speakerUsageChecker.speakerStatus().toString()
+            Log.d("AppForegroundService","speaker usage ")
             val speakerUsageString = buildString {
                 append("Speaker status is")
                 append(": ")
-                append("speakerUsage")
+//                append(speakerUsage)
             }
 
             // Save amplitudeString in SharedPreferences

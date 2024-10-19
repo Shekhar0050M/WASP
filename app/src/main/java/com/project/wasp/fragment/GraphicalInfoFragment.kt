@@ -46,13 +46,13 @@ class GraphicalInfoFragment: Fragment() {
     private val updateRunnable = object : Runnable {
         override fun run() {
             // Retrieve amplitudeString from SharedPreferences
-            val amplitudeString = sharedPreferencesManager.getValue("amplitudeText", "")
+            val amplitudeString = sharedPreferencesManager.getValue("amplitudeText", "Audio amplitude is not available")
             amplitudeMicTextView.text = amplitudeString
 
-            val averageAmplitudeString = sharedPreferencesManager.getValue("averageAmplitudeText", "")
+            val averageAmplitudeString = sharedPreferencesManager.getValue("averageAmplitudeText", "Average noise level is not available")
             averageAmplitudeMicTextView.text = averageAmplitudeString
 
-            val speakerUsageCheckerString = sharedPreferencesManager.getValue("speakerUsageCheckerText", "")
+            val speakerUsageCheckerString = sharedPreferencesManager.getValue("speakerUsageText", "Checking speaker......")
             speakerUsageCheckerTextView.text = speakerUsageCheckerString
             // Schedule the next update
             handler.postDelayed(this, updateInterval)

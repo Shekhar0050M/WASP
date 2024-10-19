@@ -6,7 +6,8 @@ import android.media.AudioManager
 import android.util.Log
 
 class SpeakerUsageChecker(private val context: Context) {
-    public fun speakerStatus(): String {
-        return "True"
+
+    fun speakerStatus(): Boolean {
+        return true
     }
 }
