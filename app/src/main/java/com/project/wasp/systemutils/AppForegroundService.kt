@@ -45,6 +45,7 @@ class AppForegroundService : Service() {
         // Initialize SharedPreferencesManager and AudioUtils
         sharedPreferencesManager = SharedPreferencesManager(this)
         audioRecorder = AudioUtils(this)
+        speakerUsageChecker = SpeakerUsageChecker(this)
 
         // Start updating amplitude
         handler.post(updateRunnable)
@@ -66,12 +67,12 @@ class AppForegroundService : Service() {
                 append(averageAmplitude)
             }
 
-//            val speakerUsage = speakerUsageChecker.speakerStatus().toString()
+            val speakerUsage = speakerUsageChecker.isSpeakerActive()
             Log.d("AppForegroundService","speaker usage ")
             val speakerUsageString = buildString {
                 append("Speaker status is")
                 append(": ")
-//                append(speakerUsage)
+                append(speakerUsage)
             }
 
             // Save amplitudeString in SharedPreferences
@@ -102,6 +103,8 @@ class AppForegroundService : Service() {
         handler.removeCallbacks(updateRunnable)
         audioRecorder.stopRecording()
         Log.d("AppForegroundService", "Service destroyed")
+        speakerUsageChecker.unregisterReceiver()
+        Log.d("AppForegroundService", "Speaker Usage Service destroyed")
     }
 
 }
