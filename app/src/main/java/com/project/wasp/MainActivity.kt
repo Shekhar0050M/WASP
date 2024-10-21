@@ -14,7 +14,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.project.wasp.fragment.DetailedInfoFragment
 import com.project.wasp.systemutils.AppForegroundService
 import com.project.wasp.systemutils.PermissionsHelper
 import java.util.Calendar
@@ -58,12 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         registerReceiver(timeReceiver, IntentFilter(Intent.ACTION_TIME_TICK))
 
-        // Activate the Detailed Info fragment
-        Log.d("MainActivity","StartedDetailedInfoFragment")
-        val fragment = DetailedInfoFragment()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.navigation_detailed, fragment)
-            .commit()
 
         // Start the app foreground service
         Log.d("MainActivity","Started App Foreground Service")
