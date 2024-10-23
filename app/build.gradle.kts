@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.chaquo.python")
+//    id("com.chaquo.python")
 }
 
 android {
@@ -56,15 +56,15 @@ android {
     flavorDimensions += "pyVersion"
 }
 
-chaquopy {
-    defaultConfig {
-        version = "3.8"
-        pip {
-            install("numpy")
-            install("matplotlib")
-        }
-    }
-}
+//chaquopy {
+//    defaultConfig {
+//        version = "3.8"
+//        pip {
+//            install("numpy")
+//            install("matplotlib")
+//        }
+//    }
+//}
 
 dependencies {
 

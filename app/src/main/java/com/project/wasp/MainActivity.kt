@@ -11,8 +11,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.chaquo.python.Python
-import com.chaquo.python.android.AndroidPlatform
+//import com.chaquo.python.Python
+//import com.chaquo.python.android.AndroidPlatform
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.wasp.systemutils.AppForegroundService
 import com.project.wasp.systemutils.PermissionsHelper
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         startForegroundService(serviceIntent)
 
         // Python code run
-        onCreatePythonRun()
+//        onCreatePythonRun()
     }
 
     override fun onRequestPermissionsResult(
@@ -93,15 +93,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onCreatePythonRun(){
-        if (! Python.isStarted()) {
-            Python.start(AndroidPlatform(applicationContext))
-        }
-        val python = Python.getInstance()
-        val module = python.getModule("interpreter")
-        val image = module["fig"]
-        Log.d("MainActivity", image.toString())
-    }
+//    private fun onCreatePythonRun(){
+//        if (! Python.isStarted()) {
+//            Python.start(AndroidPlatform(applicationContext))
+//        }
+//        val python = Python.getInstance()
+//        val module = python.getModule("interpreter")
+//        val image = module["fig"]
+//        Log.d("MainActivity", image.toString())
+//    }
 
 
 
