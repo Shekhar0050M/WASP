@@ -11,7 +11,7 @@
     <string name="average_audio_amplitude_text">Average Audio Amplitude is</string>
     <string name="default_notification_channel_id">Default notification</string>
     <string name="happy_face">😊</string>
-    <string name="average_noise_level_averagenoise_hz">Average noise level: $averageNoise dB</string>
+    <string name="average_noise_level_averagenoise_hz">Calculating average noise level........</string>
     <string name="speaker_is_in_use">Checking speaker......</string>
     <string name="set_alarm">Set Alarm</string>
     <string name="cancel_alarm">Cancel Alarm</string>

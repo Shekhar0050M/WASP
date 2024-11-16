@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/navigation_detailed"
-        android:icon="@drawable/developer_mode_24px"
-        android:actionLayout="@layout/detailed_information"
-        android:title="@string/nerd_mode" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_detailed"-->
+<!--        android:icon="@drawable/developer_mode_24px"-->
+<!--        android:actionLayout="@layout/detailed_information"-->
+<!--        android:title="@string/nerd_mode" />-->
     <item
         android:id="@+id/navigation_default"
         android:icon="@drawable/mode_standby_24px"

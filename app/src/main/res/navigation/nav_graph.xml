@@ -4,11 +4,11 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/navigation_default"
     app:route="root">
-    <fragment
-        android:id="@+id/navigation_detailed"
-        android:name="com.project.wasp.fragment.DetailedInfoFragment"
-        android:label="DetailedInformation"
-        android:layout="@layout/detailed_information"/>
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_detailed"-->
+<!--        android:name="com.project.wasp.fragment.DetailedInfoFragment"-->
+<!--        android:label="DetailedInformation"-->
+<!--        android:layout="@layout/detailed_information"/>-->
 
     <fragment
         android:id="@+id/navigation_default"

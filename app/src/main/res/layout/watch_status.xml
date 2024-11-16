@@ -19,4 +19,14 @@
 <!--        android:textColor="@android:color/black"-->
 <!--        android:layout_gravity="center"/>-->
 
+    <com.project.wasp.prompts.promptPicker
+        android:id="@+id/promptPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:padding="16dp"
+        />
+
 </RelativeLayout>
