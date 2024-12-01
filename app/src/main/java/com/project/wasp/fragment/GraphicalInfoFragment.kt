@@ -17,7 +17,7 @@ class GraphicalInfoFragment: Fragment() {
 
     private lateinit var amplitudeMicTextView: TextView
     private lateinit var averageAmplitudeMicTextView: TextView
-    private lateinit var speakerUsageCheckerTextView: TextView
+//    private lateinit var speakerUsageCheckerTextView: TextView
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval = 1000L // Update every second (1000 milliseconds)
@@ -34,7 +34,7 @@ class GraphicalInfoFragment: Fragment() {
         // Initialize AudioUtils TextView
         amplitudeMicTextView = view.findViewById(R.id.audioUtils)
         averageAmplitudeMicTextView = view.findViewById(R.id.audioAverage)
-        speakerUsageCheckerTextView= view.findViewById(R.id.speakerUsage)
+//        speakerUsageCheckerTextView= view.findViewById(R.id.speakerUsage)
 
 
         val intent = Intent(activity, AppForegroundService::class.java)
@@ -52,8 +52,8 @@ class GraphicalInfoFragment: Fragment() {
             val averageAmplitudeString = sharedPreferencesManager.getValue("averageAmplitudeText", "Average noise level is not available")
             averageAmplitudeMicTextView.text = averageAmplitudeString
 
-            val speakerUsageCheckerString = sharedPreferencesManager.getValue("speakerUsageText", "Checking speaker......")
-            speakerUsageCheckerTextView.text = speakerUsageCheckerString
+//            val speakerUsageCheckerString = sharedPreferencesManager.getValue("speakerUsageText", "Checking speaker......")
+//            speakerUsageCheckerTextView.text = speakerUsageCheckerString
             // Schedule the next update
             handler.postDelayed(this, updateInterval)
         }
